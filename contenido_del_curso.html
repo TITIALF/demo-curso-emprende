@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<link rel="stylesheet" type="text/css" href="content.css" />
+<link rel="stylesheet" type="text/css" href="nav.css" />
+<meta http-equiv="content-type" content="text/html;  charset=utf-8" />
+<title>Contenido del Curso | Demo</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="author" content="Impulsa Forma" />
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-sa/4.0/" />
+<meta name="generator" content="eXeLearning 2.9 - exelearning.net" />
+<!--[if lt IE 9]><script type="text/javascript" src="exe_html5.js"></script><![endif]-->
+<script type="text/javascript" src="exe_jquery.js"></script>
+<script type="text/javascript" src="common_i18n.js"></script>
+<script type="text/javascript" src="common.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+.countdown-banner {
+    background-color: #ffcc00; /* Color de fondo: Amarillo llamativo */
+    color: #333; /* Color de texto */
+    padding: 10px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 999; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.countdown-timer {
+    color: #ff0000; /* Color del temporizador: Rojo para urgencia */
+    font-weight: bolder;
+    margin-left: 10px;
+}
+.countdown-link {
+    color: #0000ff; /* Color del enlace: Azul vibrante */
+    text-decoration: underline;
+    margin-left: 15px;
+}
+</style>
+
+<script>
+function startCountdown() {
+    const offerDuration = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+    let expiryTime = localStorage.getItem('offerExpiry');
+
+    if (!expiryTime) {
+        // Si no hay tiempo guardado, establece uno nuevo (ahora + 24 horas)
+        expiryTime = new Date().getTime() + offerDuration;
+        localStorage.setItem('offerExpiry', expiryTime);
+    } else {
+        expiryTime = parseInt(expiryTime);
+    }
+
+    const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = expiryTime - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const timerElement = document.getElementById("countdown-timer");
+        const banner = document.getElementById("countdown-banner-id");
+
+        if (distance < 0) {
+            clearInterval(x);
+            if (banner) {
+                // Borrar el tiempo de expiración y ocultar/expirar el banner
+                localStorage.removeItem('offerExpiry');
+                banner.innerHTML = "¡Oferta Expirada! El precio regular ha sido restaurado.";
+                banner.style.backgroundColor = "#ff6666";
+            }
+        } else {
+            if (timerElement) {
+                // Formato para mostrar solo Horas, Minutos, Segundos
+                timerElement.innerHTML = hours.toString().padStart(2, '0') + "h " + 
+                                         minutes.toString().padStart(2, '0') + "m " + 
+                                         seconds.toString().padStart(2, '0') + "s ";
+            }
+        }
+    }, 1000);
+}
+</script>
+
+</head>
+<body class="exe-web-site" id="exe-node-1"><script type="text/javascript">document.body.className+=" js"</script>
+<div id="countdown-banner-id" class="countdown-banner">
+    OFERTA ÚLTIMAS HORAS: Obtén el curso con 25% de descuento usando el código: <span style="color: #0000ff; text-decoration: underline;">OFERTA25</span> ¡Termina en
+    <span id="countdown-timer" class="countdown-timer"></span>
+    <a href="https://payhip.com/b/gS58M" target="_blank" class="countdown-link">
+        ¡Accede AHORA Mismo!
+    </a>
+</div>
+<script>
+    startCountdown();
+</script>
+<div id="content">
+<p id="skipNav"><a href="#main" class="sr-av">Saltar la navegación</a></p>
+<header id="header" ><div id="headerContent">Demo</div></header>
+<nav id="siteNav">
+<ul>
+   <li><a href="index.html" class="daddy main-node">¡ Bienvenida !</a></li>
+   <li id="active"><a href="contenido_del_curso.html" class="active daddy">Contenido del Curso</a>
+   <ul>
+      <li><a href="video_introductorio.html" class="daddy">Video Introductorio</a>
+      <ul class="other-section">
+         <li><a href="recursos_personales.html" class="daddy">Recursos Personales</a>
+         <ul class="other-section">
+            <li><a href="tu_momento_de_actuar_.html" class="no-ch">Tu Momento de Actuar !</a></li>
+         </ul>
+         </li>
+      </ul>
+      </li>
+   </ul>
+   </li>
+</ul>
+</nav>
+<div id='topPagination'>
+<nav class="pagination noprt">
+<a href="index.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="video_introductorio.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+<div id="main-wrapper">
+<section id="main">
+<header id="nodeDecoration"><h1 id="nodeTitle">Contenido del Curso</h1></header>
+<article class="iDevice_wrapper textIdevice em_iDevice" id="id3">
+<div class="iDevice emphasis1" >
+<header class="iDevice_header iDevice_header_noIcon"><h1 class="iDeviceTitle">¿Qué aprenderás en este curso? </h1></header>
+<div class="iDevice_inner">
+<div class="iDevice_content_wrapper">
+<div id="ta3_127_2" class="block iDevice_content">
+<div class="exe-text"><h1 style="text-align: center;"><span style="color: #ff6600; background-color: #ffffff;"><strong>🚀 PASA DE LAS IDEAS A UN NEGOCIO REAL: LAS IDEAS NO TIENEN VALOR HASTA QUE LAS VUELVES PRODUCTOS REALES.</strong></span></h1>
+<h3 style="text-align: center;"><span style="background-color: #ffffff;"><strong>¿Sabes que quieres un cambio pero no tienes idea por dónde empezar? ¿Tienes un montón de ideas pero no sabes cuál es la correcta? </strong></span></h3>
+<h1 style="text-align: center;"><span style="color: #000000; background-color: #ffffff;"><strong>No importa cual sea tu situación, este curso es la guía para pasar de soñador a emprendedor.</strong></span></h1></div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice" id="id4">
+<div class="iDevice emphasis0" >
+<div id="ta4_128_2" class="block iDevice_content">
+<div class="exe-text"><p><img src="pexels-th-ng-van-3356029-12645621.jpg" alt="" width="672" height="448" style="display: block; margin-left: auto; margin-right: auto;" /></p></div>
+</div>
+</div>
+</article>
+<article class="iDevice_wrapper textIdevice" id="id5">
+<div class="iDevice emphasis0" >
+<div id="ta5_129_2" class="block iDevice_content">
+<div class="exe-text"><h3 style="text-align: center;"><span style="color: #000000;">Nuestro programa<strong> "Emprende con lo que tienes" </strong>te ofrece el conocimiento práctico y las herramientas que necesitas para construir tu emprendimiento desde cero. A lo largo de tres módulos clave, te guiaremos paso a paso para que logres tus objetivos.</span></h3>
+<h2><span style="color: #000080;"><strong>✅ MÓDULO 1: GUÍA PARA EMPEZAR SIN EXCUSAS</strong></span></h2>
+<h3 style="text-align: justify;"><span style="color: #000000;">Al final de este módulo,<strong> tendrás la claridad para saber cuál será tu emprendimiento.</strong> Aprenderás a conocerte a ti mismo, identificando tus habilidades y los recursos que ya tienes, pero que,<strong> de pronto, no has notado.</strong> Con ejemplos prácticos y sencillos, este módulo es la base para construir tu camino.</span></h3>
+<h2><br /><span style="color: #000080;"><strong>✅ MÓDULO 2: DE LA IDEA AL MODELO DE NEGOCIO</strong></span></h2>
+<h3 style="text-align: justify;"><span style="color: #000000;">Te guiaremos para que desarrolles la mentalidad emprendedora que necesitas para ser resiliente. Aprenderás a hacer <strong>análisis de mercado básico,</strong> y a <strong>crear un modelo de negocio y plan de marketing fundamentales</strong> para tu emprendimiento.</span></h3>
+<h2><br /><span style="color: #000080;"><strong>✅ MÓDULO 3: FINANZAS Y PROMOCIÓN PARA EL CRECIMIENTO</strong></span></h2>
+<h3 style="text-align: justify;"><span style="color: #000000;">Conocerás cómo organizar tu estabilidad económica con <strong>Proyecciones Financieras y un Análisis de Rentabilidad sencillos.</strong> Aprenderás <strong>estrategias para usar las redes sociales y crear Contenido Atractivo</strong> para un crecimiento real.</span></h3>
+<h2 style="text-align: center;"><br /><span style="color: #000000;"><strong>Además, este es un curso 100% online. Cada módulo incluye un PDF descargable y un video de apoyo para que puedas consultarlos desde cualquier dispositivo y a tu propio ritmo.</strong></span></h2>
+<h1 style="text-align: center;"><em><strong><span style="color: #ff6600;">💬 Este curso está pensado para personas reales con ideas reales, como tú, que buscan construir su propio futuro financiero.</span></strong></em></h1>
+<p> </p>
+<h3 style="text-align: center;"><strong><span style="background-color: #ffffff;"><a href="https://payhip.com/b/gS58M " target="_blank" style="background-color: #ffffff;" rel="noopener">👉 Haz clic AQUÍ para Acceder al Curso Completo!</a></span></strong></h3></div>
+</div>
+</div>
+</article>
+<div id="packageLicense" class="cc cc-by-sa">
+<p><span>Obra publicada con</span> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Reconocimiento Compartir igual 4.0</a></p>
+</div>
+</section>
+</div>
+<div id='bottomPagination'>
+<nav class="pagination noprt">
+<a href="index.html" class="prev"><span><span>&laquo; </span>Anterior</span></a> <span class="sep">| </span><a href="video_introductorio.html" class="next"><span>Siguiente<span> &raquo;</span></span></a>
+</nav>
+</div>
+</div>
+<p id="made-with-eXe"><a href="https://exelearning.net/" target="_blank" rel="noopener"><span>Creado con eXeLearning<span> (Ventana nueva)</span></span></a></p><script type="text/javascript" src="_intef_js.js"></script><style>
+/* Estilos para el botón flotante */
+.whatsapp-flotante {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; /* Color verde WhatsApp */
+    color: #FFF;
+    border-radius: 50px; /* Hace el botón circular */
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Elimina el subrayado */
+}
+.whatsapp-flotante:hover {
+    background-color: #128c7e; /* Un tono más oscuro al pasar el ratón */
+}
+/* Estilos para la leyenda del botón */
+.whatsapp-leyenda {
+    position: absolute;
+    right: 70px; /* Posición a la izquierda del botón */
+    background-color: #FFF;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    display: none; /* Inicialmente oculto */
+    line-height: 1.2;
+}
+.whatsapp-flotante:hover .whatsapp-leyenda {
+    display: block; /* Muestra la leyenda al pasar el ratón */
+}
+</style>
+
+<a href="https://wa.me/573002659190?text=Hola%20Alfonso%2C%20he%20visto%20el%20Demo%20de%20%27Emprende%20con%20lo%20que%20Tienes%27%20y%20me%20gustaría%20hacer%20una%20pregunta%20antes%20de%20comprar.%2E%20Mi%20duda%20es..." 
+   target="_blank" class="whatsapp-flotante" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 1.956.551 3.843 1.621 5.467l-1.07 3.868 4.015-1.053c1.554.848 3.32 1.258 5.161 1.258 5.523 0 10-4.477 10-10S17.523 2 12 2zm3.64 12.012c-.2.132-1.222.613-1.42.706-.198.093-.334.14-.469.047-.135-.093-.526-.193-.997-.478-.47-.285-1.117-.691-1.854-1.438-.61-.607-1.025-1.353-1.282-1.782-.257-.428-.016-.658.188-.861.18-.18.4-.428.6-.642.2-.214.264-.357.399-.592.135-.236.067-.442-.031-.624-.098-.181-.884-2.115-1.21-2.888-.327-.773-.66-.67-.91-.67-.25 0-.54 0-.825 0-.284 0-.742.106-1.129.549-.387.443-1.47 1.422-1.47 3.46 0 2.038 1.51 4.01 1.72 4.3.21.288 3.012 4.793 7.373 6.643 4.36 1.85 4.36 1.235 4.86 1.157.5-.078 1.597-.65 1.82-1.28.223-.631.223-.585.158-1.077-.065-.492-.24-.766-.492-.958z"/>
+    </svg>
+    <span class="whatsapp-leyenda">Pregúntale a Alfonso (¡En vivo!)</span>
+</a></body></html>
