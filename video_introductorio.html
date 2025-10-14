@@ -43,10 +43,21 @@
 <script>
 function startCountdown() {
     const offerDuration = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
+    const expiredMarker = localStorage.getItem('offerExpiredMarker');
     let expiryTime = localStorage.getItem('offerExpiry');
+    const banner = document.getElementById("countdown-banner-id");
 
+    // 1. Verificar si la oferta ya expiró permanentemente
+    if (expiredMarker === 'true') {
+        if (banner) {
+            banner.innerHTML = "¡Oferta Expirada! El precio regular ha sido restaurado.";
+            banner.style.backgroundColor = "#ff6666";
+        }
+        return; // Detiene la función, no inicia el contador.
+    }
+
+    // 2. Si es la primera visita (o no ha expirado aún)
     if (!expiryTime) {
-        // Si no hay tiempo guardado, establece uno nuevo (ahora + 24 horas)
         expiryTime = new Date().getTime() + offerDuration;
         localStorage.setItem('offerExpiry', expiryTime);
     } else {
@@ -56,28 +67,26 @@ function startCountdown() {
     const x = setInterval(function() {
         const now = new Date().getTime();
         const distance = expiryTime - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
         const timerElement = document.getElementById("countdown-timer");
-        const banner = document.getElementById("countdown-banner-id");
 
         if (distance < 0) {
             clearInterval(x);
             if (banner) {
-                // Borrar el tiempo de expiración y ocultar/expirar el banner
-                localStorage.removeItem('offerExpiry');
+                // MARCAR COMO EXPIRADO PERMANENTEMENTE
+                localStorage.setItem('offerExpiredMarker', 'true');
+                
                 banner.innerHTML = "¡Oferta Expirada! El precio regular ha sido restaurado.";
                 banner.style.backgroundColor = "#ff6666";
             }
         } else {
             if (timerElement) {
                 // Formato para mostrar solo Horas, Minutos, Segundos
-                timerElement.innerHTML = hours.toString().padStart(2, '0') + "h " + 
-                                         minutes.toString().padStart(2, '0') + "m " + 
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                timerElement.innerHTML = hours.toString().padStart(2, '0') + "h " + 
+                                         minutes.toString().padStart(2, '0') + "m " + 
                                          seconds.toString().padStart(2, '0') + "s ";
             }
         }
