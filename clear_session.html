@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redireccionando a Precio Regular...</title>
+    <script>
+        // Borramos el cupón de la memoria (cookies y LocalStorage)
+        function delete_cookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; domain=payhip.com';
+        }
+        delete_cookie('payhip_coupon_applied');
+        delete_cookie('payhip_last_coupon');
+
+        localStorage.clear();
+
+        // Redirigimos a Payhip (al precio normal)
+        setTimeout(function() {
+             window.location.replace("https://payhip.com/b/gS58M");
+        }, 500); 
+
+    </script>
+</head>
+<body>
+    <p>La oferta ha expirado. Redireccionando al precio regular...</p>
+</body>
+</html>
