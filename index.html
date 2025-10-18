@@ -46,6 +46,16 @@ function startCountdown() {
     const offerDuration = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
     const expiredMarker = localStorage.getItem('offerExpiredMarker');
     let expiryTime = localStorage.getItem('offerExpiry');
+    const banner = document.getElementById("countdown-banner-id");// CAMBIOS PARA PRUEBA RÁPIDA (1 HORA) Y FORZAR REINICIO
+    const expirationHours = 1; // Duración de la oferta para la prueba (1 hora)
+    const offerDuration = expirationHours * 60 * 60 * 1000; // La duración real
+
+    // CAMBIO DE NOMBRE DE CLAVE PARA FORZAR REINICIO DEL CONTADOR
+    const expiredMarkerKey = 'offerExpiredMarkerTEST';
+    const expiryTimeKey = 'offerExpiryTEST'; 
+
+    const expiredMarker = localStorage.getItem(expiredMarkerKey);
+    let expiryTime = localStorage.getItem(expiryTimeKey);
     const banner = document.getElementById("countdown-banner-id");
 
     // 1. Verificar si la oferta ya expiró permanentemente
