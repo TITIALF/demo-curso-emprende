@@ -43,13 +43,13 @@
 
 <script>
 function startCountdown() {
-    // === CONFIGURACIÓN DE PRUEBA (1 HORA) ===
-    const expirationHours = 1; // DURACIÓN DE LA PRUEBA (CAMBIAR A 24 DESPUÉS)
+    // === CONFIGURACIÓN FINAL (24 HORAS) ===
+    const expirationHours = 24; // DURACIÓN FINAL DE LA OFERTA
     const offerDuration = expirationHours * 60 * 60 * 1000; // Duración en milisegundos
 
-    // CLAVES TEMPORALES PARA FORZAR EL REINICIO DEL CONTADOR
-    const expiredMarkerKey = 'offerExpiredMarkerTEST';
-    const expiryTimeKey = 'offerExpiryTEST'; 
+    // CLAVES PERMANENTES
+    const expiredMarkerKey = 'offerExpiredMarker'; // CLAVE FINAL
+    const expiryTimeKey = 'offerExpiry'; // CLAVE FINAL
     // =======================================
 
     const banner = document.getElementById("countdown-banner-id");
@@ -69,7 +69,7 @@ function startCountdown() {
     }
 
     // 2. Si es la primera visita (o no ha expirado aún)
-    if (!expiryTime) {
+    if (!expiryTime || parseInt(expiryTime) < new Date().getTime()) {
         expiryTime = new Date().getTime() + offerDuration;
         localStorage.setItem(expiryTimeKey, expiryTime);
     } else {
