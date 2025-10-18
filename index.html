@@ -70,7 +70,7 @@ function startCountdown() {
     // 2. Si es la primera visita (o no ha expirado aún)
     if (!expiryTime) {
         expiryTime = new Date().getTime() + offerDuration;
-        localStorage.setItem('offerExpiry', expiryTime);
+        localStorage.setItem(expiryTimeKey, expiryTime); // <--- Usa la clave de prueba
     } else {
         expiryTime = parseInt(expiryTime);
     }
