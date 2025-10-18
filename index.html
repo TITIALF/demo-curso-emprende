@@ -43,26 +43,27 @@
 
 <script>
 function startCountdown() {
-    const offerDuration = 24 * 60 * 60 * 1000; // 24 horas en milisegundos
-    const expiredMarker = localStorage.getItem('offerExpiredMarker');
-    let expiryTime = localStorage.getItem('offerExpiry');
-    const banner = document.getElementById("countdown-banner-id");// CAMBIOS PARA PRUEBA RÁPIDA (1 HORA) Y FORZAR REINICIO
-    const expirationHours = 1; // Duración de la oferta para la prueba (1 hora)
-    const offerDuration = expirationHours * 60 * 60 * 1000; // La duración real
+    // === CONFIGURACIÓN DE PRUEBA (1 HORA) ===
+    const expirationHours = 1; // DURACIÓN DE LA PRUEBA (CAMBIAR A 24 DESPUÉS)
+    const offerDuration = expirationHours * 60 * 60 * 1000; // Duración en milisegundos
 
-    // CAMBIO DE NOMBRE DE CLAVE PARA FORZAR REINICIO DEL CONTADOR
+    // CLAVES TEMPORALES PARA FORZAR EL REINICIO DEL CONTADOR
     const expiredMarkerKey = 'offerExpiredMarkerTEST';
     const expiryTimeKey = 'offerExpiryTEST'; 
+    // =======================================
 
+    const banner = document.getElementById("countdown-banner-id");
+    
     const expiredMarker = localStorage.getItem(expiredMarkerKey);
     let expiryTime = localStorage.getItem(expiryTimeKey);
-    const banner = document.getElementById("countdown-banner-id");
+    
 
     // 1. Verificar si la oferta ya expiró permanentemente
     if (expiredMarker === 'true') {
         if (banner) {
-            banner.innerHTML = "¡Oferta Expirada! El precio regular ha sido restaurado.";
-            banner.style.backgroundColor = "#ff6666";
+            const finalLink = "https://payhip.com/b/gS58M/checkout"; 
+            banner.innerHTML = "¡OFERTA EXPIRADA! El precio regular ha sido restaurado. <a href='" + finalLink + "' target='_blank' class='countdown-link'>Ver Curso Completo</a>";
+            banner.style.backgroundColor = "#ff6666"; // ROJO
         }
         return; // Detiene la función, no inicia el contador.
     }
@@ -70,7 +71,7 @@ function startCountdown() {
     // 2. Si es la primera visita (o no ha expirado aún)
     if (!expiryTime) {
         expiryTime = new Date().getTime() + offerDuration;
-        localStorage.setItem(expiryTimeKey, expiryTime); // <--- Usa la clave de prueba
+        localStorage.setItem(expiryTimeKey, expiryTime);
     } else {
         expiryTime = parseInt(expiryTime);
     }
@@ -80,11 +81,11 @@ function startCountdown() {
         const distance = expiryTime - now;
         const timerElement = document.getElementById("countdown-timer");
 
-    if (distance < 0) {
+        if (distance < 0) {
             clearInterval(x);
             if (banner) {
                 // MARCAR COMO EXPIRADO PERMANENTEMENTE
-                localStorage.setItem(expiredMarkerKey, 'true'); // <-- Usa la clave de prueba
+                localStorage.setItem(expiredMarkerKey, 'true');
                 
                 // ENLACE FINAL SIN EL CUPÓN (ESTO ES LA COHERENCIA DEL CÓDIGO)
                 const finalLink = "https://payhip.com/b/gS58M/checkout"; 
@@ -99,8 +100,8 @@ function startCountdown() {
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 
-                timerElement.innerHTML = hours.toString().padStart(2, '0') + "h " + 
-                                         minutes.toString().padStart(2, '0') + "m " + 
+                timerElement.innerHTML = hours.toString().padStart(2, '0') + "h " + 
+                                         minutes.toString().padStart(2, '0') + "m " + 
                                          seconds.toString().padStart(2, '0') + "s ";
             }
         }
