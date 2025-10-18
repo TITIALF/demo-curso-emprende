@@ -80,14 +80,17 @@ function startCountdown() {
         const distance = expiryTime - now;
         const timerElement = document.getElementById("countdown-timer");
 
-        if (distance < 0) {
+    if (distance < 0) {
             clearInterval(x);
             if (banner) {
                 // MARCAR COMO EXPIRADO PERMANENTEMENTE
-                localStorage.setItem('offerExpiredMarker', 'true');
+                localStorage.setItem(expiredMarkerKey, 'true'); // <-- Usa la clave de prueba
                 
-                banner.innerHTML = "¡Oferta Expirada! El precio regular ha sido restaurado.";
-                banner.style.backgroundColor = "#ff6666";
+                // ENLACE FINAL SIN EL CUPÓN (ESTO ES LA COHERENCIA DEL CÓDIGO)
+                const finalLink = "https://payhip.com/b/gS58M/checkout"; 
+
+                banner.innerHTML = "¡OFERTA EXPIRADA! El precio regular ha sido restaurado. <a href='" + finalLink + "' target='_blank' class='countdown-link'>Ver Curso Completo</a>";
+                banner.style.backgroundColor = "#ff6666"; // ROJO
             }
         } else {
             if (timerElement) {
